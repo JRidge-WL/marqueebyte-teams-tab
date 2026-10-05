@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MarqueeByte Ticker</title>
+<script src="https://res.cdn.office.net/teams-js/2.34.0/js/MicrosoftTeams.min.js" crossorigin="anonymous"></script>
+<style>
+  body { font-family: "Segoe UI", system-ui, sans-serif; margin: 0; padding: 24px; color: #242424; background: #fff; }
+  @media (prefers-color-scheme: dark) { body { color: #f0f0f0; background: #1f1f1f; } }
+  h2 { margin: 0 0 8px; font-weight: 600; }
+  p { margin: 0 0 8px; line-height: 1.5; max-width: 560px; }
+</style>
+</head>
+<body>
+<h2>MarqueeByte Ticker</h2>
+<p>Click <b>Save</b> to let the office LED ticker read this team's channel messages.</p>
+<p>You can remove the tab afterwards &mdash; the ticker keeps working.</p>
+<script>
+  // Teams loads this when the tab is added. All it does is tell Teams where the
+  // tab's own page is; installing the app is what grants the ticker its permissions.
+  var base = location.href.split("?")[0].replace(/[^/]*$/, "");
+  microsoftTeams.app.initialize().then(function () {
+    microsoftTeams.pages.config.registerOnSaveHandler(function (saveEvent) {
+      microsoftTeams.pages.config.setConfig({
+        entityId: "marqueebyte-ticker",
+        contentUrl: base + "tab.html",
+        websiteUrl: base + "tab.html",
+        suggestedDisplayName: "LED Ticker"
+      }).then(function () { saveEvent.notifySuccess(); })
+        .catch(function (e) { saveEvent.notifyFailure(String(e)); });
+    });
+    microsoftTeams.pages.config.setValidityState(true);
+  });
+</script>
+</body>
+</html>

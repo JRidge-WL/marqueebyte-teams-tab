@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MarqueeByte Ticker</title>
+<script src="https://res.cdn.office.net/teams-js/2.34.0/js/MicrosoftTeams.min.js" crossorigin="anonymous"></script>
+<style>
+  body { font-family: "Segoe UI", system-ui, sans-serif; margin: 0; padding: 24px; color: #242424; background: #fff; }
+  @media (prefers-color-scheme: dark) { body { color: #f0f0f0; background: #1f1f1f; } }
+  h2 { margin: 0 0 8px; font-weight: 600; }
+  p { margin: 0 0 8px; line-height: 1.5; max-width: 560px; }
+</style>
+</head>
+<body>
+<h2>&#x2705; Connected to the office LED ticker</h2>
+<p>Messages posted in this team's selected channels appear on the ticker. Which channels are
+shown is chosen in MarqueeByte Studio (System &rarr; Teams channels).</p>
+<p>You can remove this tab &mdash; the app stays installed and the ticker keeps working.</p>
+<script>
+  if (window.microsoftTeams) { microsoftTeams.app.initialize().catch(function () {}); }
+</script>
+</body>
+</html>
